@@ -6,6 +6,9 @@ package de.bytefish.envers.web.filters;
 
 import de.bytefish.envers.core.ThreadLocalStorage;
 import de.bytefish.envers.exceptions.MissingUsernameException;
+import org.hibernate.Session;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -13,8 +16,12 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
+import static org.springframework.web.context.request.RequestAttributes.SCOPE_REQUEST;
+
 @Provider
 public class UserNameFilter implements ContainerRequestFilter {
+
+    Session session;
 
     @Override
     public void filter(ContainerRequestContext ctx) throws IOException {
@@ -34,6 +41,10 @@ public class UserNameFilter implements ContainerRequestFilter {
         if(username == null) {
             handleError(ctx);
         }
+
+        RequestContextHolder
+                .currentRequestAttributes()
+                .setAttribute("Username", username, SCOPE_REQUEST);
 
         // Set the Username in the ThreadLocalStorage of the Request:
         ThreadLocalStorage.setUsername(username);
