@@ -4,10 +4,8 @@
 package de.bytefish.envers.web.filters;
 
 
-import de.bytefish.envers.core.ThreadLocalStorage;
 import de.bytefish.envers.exceptions.MissingUsernameException;
 import org.hibernate.Session;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.ws.rs.container.ContainerRequestContext;
@@ -42,12 +40,10 @@ public class UserNameFilter implements ContainerRequestFilter {
             handleError(ctx);
         }
 
+        // Set the Username in the current Request Scope:
         RequestContextHolder
                 .currentRequestAttributes()
                 .setAttribute("Username", username, SCOPE_REQUEST);
-
-        // Set the Username in the ThreadLocalStorage of the Request:
-        ThreadLocalStorage.setUsername(username);
     }
 
     public void handleError(ContainerRequestContext ctx) {

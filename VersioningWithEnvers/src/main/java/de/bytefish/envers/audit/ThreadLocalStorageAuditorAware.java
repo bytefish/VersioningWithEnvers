@@ -3,11 +3,8 @@
 
 package de.bytefish.envers.audit;
 
-import de.bytefish.envers.core.ThreadLocalStorage;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.orm.hibernate5.SpringSessionContext;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import static org.springframework.web.context.request.RequestAttributes.SCOPE_REQUEST;
