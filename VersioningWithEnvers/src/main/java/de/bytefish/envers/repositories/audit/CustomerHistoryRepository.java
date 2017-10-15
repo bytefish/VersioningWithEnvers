@@ -26,7 +26,7 @@ public class CustomerHistoryRepository implements ICustomerHistoryRepository {
     private EntityManager entityManager;
 
     @Transactional(readOnly = true)
-    public List<CustomerHistory> listCustomerRevisions(Long stationId) {
+    public List<CustomerHistory> listCustomerRevisions(Long customerId) {
 
         // Create the Audit Reader. It uses the EntityManager, which will be opened when
         // starting the new Transation and closed when the Transaction finishes.
@@ -35,11 +35,11 @@ public class CustomerHistoryRepository implements ICustomerHistoryRepository {
         // Create the Query:
         AuditQuery auditQuery = auditReader.createQuery()
                 .forRevisionsOfEntity(Customer.class, false, true)
-                .add(AuditEntity.id().eq(stationId));
+                .add(AuditEntity.id().eq(customerId));
 
         // We don't operate on the untyped Results, but cast them into a List of AuditQueryResult:
         return AuditQueryUtils.getAuditQueryResults(auditQuery, Customer.class).stream()
-                // Turn into the Station History Domain Object:
+                // Turn into the CustomerHistory Domain Object:
                 .map(x -> getCustomerHistory(x))
                 // And collect the Results:
                 .collect(Collectors.toList());

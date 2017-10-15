@@ -5,14 +5,12 @@ package de.bytefish.envers.web.resources;
 
 
 import de.bytefish.envers.model.CustomerHistory;
-import de.bytefish.envers.repositories.ICustomerRepository;
 import de.bytefish.envers.repositories.audit.ICustomerHistoryRepository;
 import de.bytefish.envers.web.converter.Converters;
 import de.bytefish.envers.web.model.CustomerHistoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Convert;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;

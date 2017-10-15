@@ -1,5 +1,7 @@
-package de.bytefish.envers.web.exceptions;
+// Copyright (c) Philipp Wagner. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+package de.bytefish.envers.web.exceptions;
 
 import de.bytefish.envers.web.errors.ServiceError;
 import javax.ws.rs.core.Response;
