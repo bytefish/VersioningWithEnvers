@@ -2,7 +2,9 @@
 
 ## Project ##
 
-This project is an example project for Versioning and Auditing Database Tables with Hibernate Envers.
+This project is an example project for Versioning and Auditing Database Tables with Hibernate Envers:
+
+* https://bytefish.de/blog/hibernate_envers_versioning_and_auditing/
 
 ### Example ###
 
