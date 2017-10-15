@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ICustomerHistoryRepository {
 
-    List<CustomerHistory> listCustomerRevisions(Long stationId);
+    List<CustomerHistory> listCustomerRevisions(Long customerId);
 
 }
